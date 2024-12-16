@@ -4,6 +4,7 @@ Does the main task
 
 #include <iostream>
 #include "BMP_reader.hpp"
+#include "Turn.hpp"
 
 
 int main(int argc, char *argv[]){
@@ -21,5 +22,14 @@ int main(int argc, char *argv[]){
     Pixel **pixelMap = nullptr;
     
     readBMP(fileName, fileInfoHeader, fileDIBHeader, pixelMap);
-    writeBMP("Writed.bmp", fileInfoHeader, fileDIBHeader, pixelMap);
+    
+    Pixel **rotatedClockwise = rotateClockwise(pixelMap, fileDIBHeader.width, fileDIBHeader.height);
+    std::swap(fileDIBHeader.width, fileDIBHeader.height);
+    writeBMP("RotatedClockwise.bmp", fileInfoHeader, fileDIBHeader, rotatedClockwise);
+    std::swap(fileDIBHeader.width, fileDIBHeader.height);
+    
+    Pixel **rotatedCounterClockwise = rotateCounterClockwise(pixelMap, fileDIBHeader.width, fileDIBHeader.height);
+    std::swap(fileDIBHeader.width, fileDIBHeader.height);
+    writeBMP("RotatedCounterClockwise.bmp", fileInfoHeader, fileDIBHeader, rotatedCounterClockwise);
+    std::swap(fileDIBHeader.width, fileDIBHeader.height);
 }
