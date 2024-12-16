@@ -8,7 +8,8 @@ Structures for saving BMP headers
 struct BMPInfoHeader {
     unsigned short ID;
     unsigned int fileSize;
-    unsigned char unused[4];
+    unsigned short unused1;
+    unsigned short unused2;
     unsigned int pixelsOffset;
 };
 

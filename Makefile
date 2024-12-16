@@ -2,7 +2,7 @@ PROJECT = bmp
 
 LIBPROJECT = $(PROJECT).a
 
-OBJECTS = main.o
+OBJECTS = main.o BMP_reader.o
 
 DEPS = (wildcard *.hpp)
 
@@ -39,3 +39,4 @@ clean:
 cleanall: clean
 	rm -f $(PROJECT)
 	rm -f $(LIBPROJECT)
+	rm -f Writed.bmp
