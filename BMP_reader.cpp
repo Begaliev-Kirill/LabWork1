@@ -51,3 +51,11 @@ void writeBMP(const char *fileName, const BMPInfoHeader &fileInfoHeader, const B
         BMPfile.write("\0\0\0", padding); //add padding that was ignored when file was readed
     }
 }
+
+void pixelMapRemover(Pixel **&pixelMap,  unsigned int height) {
+    for (unsigned int i = 0; i < height; ++i) {
+        delete[] pixelMap[i];
+    }
+    delete[] pixelMap;
+    pixelMap = nullptr;
+}

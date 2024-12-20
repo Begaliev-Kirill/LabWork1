@@ -68,8 +68,11 @@ void applyGausFilter(Pixel **pixelMap, unsigned int width, unsigned int height, 
     }
     
     for (unsigned int y = 0; y < height; ++y) {
-        for (unsigned int x = 0; x < width; ++x) {
+        for (unsigned int x = 0; x < height; ++x) {
             pixelMap[y][x] = filteredPixelMap[y][x];
         }
+        delete[] filteredPixelMap[y];
     }
+    
+    delete[] filteredPixelMap;
 }

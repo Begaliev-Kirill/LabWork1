@@ -10,5 +10,6 @@ Read and write BMP file declaration
 
 void readBMP(const char *fileName, BMPInfoHeader &fileInfoHeader, BMPDIBHeader &fileDIBHeader, Pixel **&pixelMap);
 void writeBMP(const char *fileName, const BMPInfoHeader &fileInfoHeader, const BMPDIBHeader &fileDIBHeader, Pixel **pixelMap);
+void pixelMapRemover(Pixel **&pixelMap,  unsigned int height);
 
 #endif //BMP_READER_HPP

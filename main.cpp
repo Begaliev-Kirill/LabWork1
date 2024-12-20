@@ -14,7 +14,7 @@ int main(int argc, char *argv[]){
         std::cout << "Wrong input, try \"./bmp input_file_name.bmp radiusOfGausMatrix(ushort) sigma(float)\"" << std::endl;
     }
     
-    const char* fileName = "test-goat.bmp";
+    const char* fileName = "test_goat.bmp";
     unsigned short radiusOfGausMatrix = 7;
     float sigma = 4.1478;
     
@@ -41,6 +41,7 @@ int main(int argc, char *argv[]){
     Pixel **rotatedClockwise = rotateClockwise(pixelMap, fileDIBHeader.width, fileDIBHeader.height);
     std::swap(fileDIBHeader.width, fileDIBHeader.height);
     writeBMP("RotatedClockwise.bmp", fileInfoHeader, fileDIBHeader, rotatedClockwise);
+    pixelMapRemover(rotatedClockwise, fileDIBHeader.height);
     std::swap(fileDIBHeader.width, fileDIBHeader.height);
     
     Pixel **rotatedCounterClockwise = rotateCounterClockwise(pixelMap, fileDIBHeader.width, fileDIBHeader.height);
@@ -49,5 +50,8 @@ int main(int argc, char *argv[]){
     
     applyGausFilter(rotatedCounterClockwise, fileDIBHeader.width, fileDIBHeader.height, radiusOfGausMatrix, filterMatrix(radiusOfGausMatrix, sigma));
     writeBMP("GausFilter.bmp", fileInfoHeader, fileDIBHeader, rotatedCounterClockwise);
+    pixelMapRemover(rotatedCounterClockwise, fileDIBHeader.height);
     std::swap(fileDIBHeader.width, fileDIBHeader.height);
+
+    pixelMapRemover(pixelMap, fileDIBHeader.height);
 }
