@@ -2,7 +2,7 @@ PROJECT = bmp
 
 LIBPROJECT = $(PROJECT).a
 
-OBJECTS = main.o BMP_reader.o Turn.o
+OBJECTS = main.o BMP_reader.o Turn.o Gaus_filter.o
 
 DEPS = (wildcard *.hpp)
 
@@ -36,7 +36,10 @@ all: $(PROJECT)
 clean:
 	rm -f *.o
 
-cleanall: clean
+cleanimage:
+	rm -f RotatedClockwise.bmp RotatedCounterClockwise.bmp GausFilter.bmp
+	
+cleanall: clean cleanimage
 	rm -f $(PROJECT)
 	rm -f $(LIBPROJECT)
-	rm -f RotatedClockwise.bmp RotatedCounterClockwise.bmp
+	
