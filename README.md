@@ -3,7 +3,7 @@
 Begaliev Kirill Evgenievich, 24.B82-mm <br>
 st129977@student.spbu.ru , tg: @silly_kat
 ## Description
-Program read the BMP file and rotate it 90 degree clockwise and counterclockwise, apply Gays filter to the last one and save all results
+Program read the BMP file and rotate it 90 degree clockwise and counterclockwise, apply Gaus filter to the last one and save all results
 ## Build
 #### to build project
 ```bash
